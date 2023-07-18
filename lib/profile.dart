@@ -40,11 +40,10 @@ class profile extends StatelessWidget {
                     Navigator.push<void>(
                         context,
                         MaterialPageRoute<void>(
-                            builder: (BuildContext context) =>
-                                const NewWidget()))
+                            builder: (BuildContext context) => const profile()))
                   },
-                  icon: (Icons.home),
-                  text: 'home',
+                  icon: (Icons.settings),
+                  text: 'settings',
                 ),
                 GButton(
                     onPressed: () => {},
@@ -59,10 +58,10 @@ class profile extends StatelessWidget {
                               context,
                               MaterialPageRoute<void>(
                                   builder: (BuildContext context) =>
-                                      const profile()))
+                                      const NewWidget()))
                         },
-                    icon: (Icons.settings),
-                    text: 'settings'),
+                    icon: (Icons.home),
+                    text: 'home'),
               ]),
         ),
       ),
