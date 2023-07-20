@@ -1,8 +1,8 @@
+import 'package:demo1/homescreen2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'homescreen.dart';
-
 
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
@@ -70,18 +70,18 @@ class MyWidget extends StatelessWidget {
               ),
             ),
           ),
-            TextButton(style: TextButton.styleFrom( primary: Colors.white, backgroundColor: Colors.blueAccent),
-              child: Text("LOG IN"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: ((context) => const NewWidget()),
-                    )
-                    );
-              },
-            ),
-          
+          TextButton(
+            style: TextButton.styleFrom(
+                primary: Colors.white, backgroundColor: Colors.blueAccent),
+            child: Text("LOG IN"),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) => Homescreen()),
+                  ));
+            },
+          ),
         ],
       )),
     );

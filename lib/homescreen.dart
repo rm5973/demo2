@@ -1,6 +1,7 @@
 import 'package:demo1/help.dart';
 import 'package:demo1/login.dart';
 import 'package:demo1/optionlaund.dart';
+import 'package:demo1/payment.dart';
 import 'package:demo1/pickup.dart';
 import 'package:demo1/profile.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,64 +21,6 @@ class _NewWidget extends State<NewWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          IconButton(onPressed: () {}, icon: Icon(Icons.account_circle))
-        ],
-        toolbarOpacity: 0.7,
-        backgroundColor: Color.fromARGB(255, 235, 159, 66),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25))),
-        title: Text("WELCOME BACK, DEXTER"),
-      ),
-      bottomNavigationBar: Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
-          child: GNav(
-              curve: Curves.easeOut,
-              backgroundColor: Colors.black,
-              color: Colors.white,
-              tabBackgroundColor: Colors.grey.shade800,
-              activeColor: Colors.white,
-              gap: 8,
-              padding: EdgeInsets.all(16),
-              tabs: [
-                GButton(
-                  active: false,
-                  activeBorder: Border(),
-                  onPressed: () => {
-                    Navigator.push<void>(
-                        context,
-                        MaterialPageRoute<void>(
-                            builder: (BuildContext context) =>
-                                const NewWidget()))
-                  },
-                  icon: (Icons.home),
-                  text: 'Home',
-                ),
-                GButton(
-                    onPressed: () => {},
-                    icon: (Icons.favorite_border),
-                    text: 'like'),
-                GButton(
-                    onPressed: () => {}, icon: (Icons.search), text: "search"),
-                GButton(
-                    active: true,
-                    onPressed: () => {
-                          Navigator.push<void>(
-                              context,
-                              MaterialPageRoute<void>(
-                                  builder: (BuildContext context) =>
-                                      const profile()))
-                        },
-                    icon: (Icons.settings),
-                    text: 'settings'),
-              ]),
-        ),
-      ),
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

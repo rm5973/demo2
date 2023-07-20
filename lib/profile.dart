@@ -11,60 +11,6 @@ class profile extends StatelessWidget {
   Widget build(BuildContext context) {
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 180, 178, 178),
-        title: Text('Profile'),
-        titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(isDark ? Icons.sunny : Icons.dark_mode))
-        ],
-      ),
-      bottomNavigationBar: Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
-          child: GNav(
-              curve: Curves.easeInOut,
-              backgroundColor: Colors.black,
-              color: Colors.white,
-              tabBackgroundColor: Colors.grey.shade800,
-              activeColor: Colors.white,
-              gap: 8,
-              padding: EdgeInsets.all(16),
-              tabs: [
-                GButton(
-                  active: false,
-                  activeBorder: Border(),
-                  onPressed: () => {
-                    Navigator.push<void>(
-                        context,
-                        MaterialPageRoute<void>(
-                            builder: (BuildContext context) => const profile()))
-                  },
-                  icon: (Icons.settings),
-                  text: 'settings',
-                ),
-                GButton(
-                    onPressed: () => {},
-                    icon: (Icons.favorite_border),
-                    text: 'like'),
-                GButton(
-                    onPressed: () => {}, icon: (Icons.search), text: "search"),
-                GButton(
-                    active: true,
-                    onPressed: () => {
-                          Navigator.push<void>(
-                              context,
-                              MaterialPageRoute<void>(
-                                  builder: (BuildContext context) =>
-                                      const NewWidget()))
-                        },
-                    icon: (Icons.home),
-                    text: 'home'),
-              ]),
-        ),
-      ),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(30.0),
