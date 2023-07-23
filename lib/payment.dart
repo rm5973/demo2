@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:line_icons/line_icon.dart';
 
 class paymentWidget extends StatefulWidget {
   const paymentWidget({super.key});
@@ -10,15 +11,41 @@ class paymentWidget extends StatefulWidget {
 }
 
 class _paymentWidget extends State<paymentWidget> {
+  bool lights = false;
   @override
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 26.0, left: 10, right: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: () {},
+                      icon: LineIcon.arrowLeft(
+                        color: Colors.black,
+                      )),
+                  Switch(
+                    value: lights,
+                    activeColor: Colors.black,
+                    onChanged: (
+                      bool value,
+                    ) {
+                      setState(() {
+                        lights = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
@@ -57,7 +84,7 @@ class _paymentWidget extends State<paymentWidget> {
                     Padding(
                       padding: const EdgeInsets.only(top: 30, left: 16),
                       child: Text(
-                        "1200.00rs",
+                        "1200.00",
                         style: TextStyle(fontSize: 35, color: Colors.white),
                       ),
                     ),
@@ -95,7 +122,10 @@ class _paymentWidget extends State<paymentWidget> {
                     decoration: BoxDecoration(color: HexColor('#3BA6E1')),
                     child: Row(
                       children: [
-                        IconButton(onPressed: () {}, icon: Icon(Icons.qr_code))
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.bolt_rounded),
+                        )
                       ],
                     ),
                   ),
@@ -135,10 +165,83 @@ class _paymentWidget extends State<paymentWidget> {
                       )),
                 )
               ],
-            )
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Change(
+              day: ' today',
+              image: 'images/laundaryimg1.jpeg',
+              amount: '148',
+              onPressed: () {},
+            ),
+            Change(
+                day: 'Yesterday',
+                image: 'images/laundaryimg2.jpeg',
+                amount: '260',
+                onPressed: () {}),
+            Change(
+                day: 'Yesterday',
+                image: 'images/laundaryimg3.jpeg',
+                amount: '300',
+                onPressed: () {})
           ],
         ),
       ),
     );
+  }
+}
+
+class Change extends StatelessWidget {
+  const Change(
+      {Key? key,
+      required this.day,
+      required this.image,
+      required this.amount,
+      required this.onPressed})
+      : super(key: key);
+  final String day;
+  final String image;
+  final String amount;
+  final VoidCallback onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0),
+      child: ListTile(
+          onTap: onPressed,
+          leading: Container(
+            width: 60,
+            height: 70,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Color.fromARGB(255, 164, 61, 183),
+            ),
+            child: // Image.asset(image)
+                Image(
+              height: 70,
+              width: 40,
+              image: AssetImage(image),
+              fit: BoxFit.cover,
+            ),
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(day, style: TextStyle(color: HexColor('#FF747171'))),
+              Text('HAPPY LAUNDARY', style: TextStyle(fontSize: 20)),
+            ],
+          ),
+          trailing: Container(
+            width: 30,
+            height: 30,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(100),
+              color: Colors.grey.withOpacity(0.1),
+            ),
+            child: Text(amount),
+          )),
+    );
+    ;
   }
 }

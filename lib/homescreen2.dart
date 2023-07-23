@@ -24,44 +24,44 @@ class _Homescreen extends State<Homescreen> {
   ];
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.white,
-        shadowColor: (Colors.white),
-        toolbarHeight: 60,
-        backgroundColor: Colors.white,
-        // shape: RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.only(
-        //         // bottomLeft: Radius.circular(50),
-        //         // bottomRight: Radius.circular(50)
-        //         )),
-        iconTheme: IconThemeData(color: Colors.black),
-        title: SizedBox(
-          width: 200,
-          height: 40,
-          child: TextField(
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(2.0),
-                  hintText: "Search...",
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      Icons.search,
-                    ),
-                    onPressed: () {},
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)))),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.notifications,
-                )),
-          )
-        ],
-      ),
+      // appBar: AppBar(
+      //   foregroundColor: Colors.white,
+      //   shadowColor: (Colors.white),
+      //   toolbarHeight: 60,
+      //   backgroundColor: Colors.white,
+      //   // shape: RoundedRectangleBorder(
+      //   //     borderRadius: BorderRadius.only(
+      //   //         // bottomLeft: Radius.circular(50),
+      //   //         // bottomRight: Radius.circular(50)
+      //   //         )),
+      //   iconTheme: IconThemeData(color: Colors.black),
+      //   title: SizedBox(
+      //     width: 200,
+      //     height: 40,
+      //   child: TextField(
+      //       decoration: InputDecoration(
+      //           contentPadding: EdgeInsets.all(2.0),
+      //           hintText: "Search...",
+      //           suffixIcon: IconButton(
+      //             icon: Icon(
+      //               Icons.search,
+      //             ),
+      //             onPressed: () {},
+      //           ),
+      //           border: OutlineInputBorder(
+      //               borderRadius: BorderRadius.circular(20.0)))),
+      // ),
+      //   actions: [
+      //     Padding(
+      //       padding: const EdgeInsets.all(8.0),
+      //       child: IconButton(
+      //           onPressed: () {},
+      //           icon: Icon(
+      //             Icons.notifications,
+      //           )),
+      //     )
+      //   ],
+      // ),
       body: Container(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -80,9 +80,9 @@ class _Homescreen extends State<Homescreen> {
                 icon: (Icons.home),
                 text: 'Home',
               ),
-              GButton(icon: (Icons.account_circle), text: 'cart'),
-              GButton(icon: (Icons.wallet), text: "search"),
-              GButton(icon: (Icons.help), text: 'wallet'),
+              GButton(icon: (Icons.account_circle), text: 'profile'),
+              GButton(icon: (Icons.wallet), text: "wallet"),
+              GButton(icon: (Icons.help), text: 'help'),
             ],
             selectedIndex: _selectedIndex,
             onTabChange: (index) {
