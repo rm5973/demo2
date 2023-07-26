@@ -17,7 +17,7 @@ class _Homescreen extends State<Homescreen> {
   @override
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
-    NewWidget(),
+    MyHomePage(),
     profile(),
     paymentWidget(),
     helpWidget()
