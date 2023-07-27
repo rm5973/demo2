@@ -20,7 +20,7 @@ class _Homescreen extends State<Homescreen> {
     MyHomePage(),
     profile(),
     paymentWidget(),
-    helpWidget()
+    HelpWidget()
   ];
   Widget build(BuildContext context) {
     return Scaffold(
