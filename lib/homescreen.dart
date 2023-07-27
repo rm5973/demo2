@@ -192,64 +192,64 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80), // Increase the app bar height
-        child: Padding(
-          padding: const EdgeInsets.only(top: 16.0),
-          child: AppBar(
-            automaticallyImplyLeading: false, // Remove the back button
-            backgroundColor: Colors.white, // Set app bar color to white
-            elevation: 0, // Remove the shadow
-            title: GestureDetector(
-              child: Column(
-                // Use Column to align texts vertically
-                crossAxisAlignment:
-                    CrossAxisAlignment.start, // Align the text to the left
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: 16), // Add top padding of 16 pixels
-                    child: Text(
-                      'Current Location',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey, // Set the color to grey
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 4), // Add some space between the texts
-                  Row(
-                    // Use Row to align icon and text horizontally
-                    children: [
-                      Icon(Icons.location_on,
-                          color: Colors.blue), // Location icon on the left
-                      SizedBox(width: 8),
-                      Text(
-                        "Potheri, Chennai",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight:
-                              FontWeight.bold, // Set the font weight to bold
-                          color: Colors.black, // Set the text color to black
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            actions: [
-              IconButton(
-                icon: Icon(Icons.notifications,
-                    color: Colors.black), // Set icon color to black
-                onPressed: () {
-                  // Handle notification icon press
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      // appBar: PreferredSize(
+      //   preferredSize: Size.fromHeight(80), // Increase the app bar height
+      //   child: Padding(
+      //     padding: const EdgeInsets.only(top: 16.0),
+      //     child: AppBar(
+      //       automaticallyImplyLeading: false, // Remove the back button
+      //       backgroundColor: Colors.white, // Set app bar color to white
+      //       elevation: 0, // Remove the shadow
+      //       title: GestureDetector(
+      //         child: Column(
+      //           // Use Column to align texts vertically
+      //           crossAxisAlignment:
+      //               CrossAxisAlignment.start, // Align the text to the left
+      //           children: [
+      //             Padding(
+      //               padding: EdgeInsets.only(
+      //                   top: 16), // Add top padding of 16 pixels
+      //               child: Text(
+      //                 'Current Location',
+      //                 style: TextStyle(
+      //                   fontSize: 16,
+      //                   color: Colors.grey, // Set the color to grey
+      //                 ),
+      //               ),
+      //             ),
+      //             SizedBox(height: 4), // Add some space between the texts
+      //             Row(
+      //               // Use Row to align icon and text horizontally
+      //               children: [
+      //                 Icon(Icons.location_on,
+      //                     color: Colors.blue), // Location icon on the left
+      //                 SizedBox(width: 8),
+      //                 Text(
+      //                   "Potheri, Chennai",
+      //                   style: TextStyle(
+      //                     fontSize: 20,
+      //                     fontWeight:
+      //                         FontWeight.bold, // Set the font weight to bold
+      //                     color: Colors.black, // Set the text color to black
+      //                   ),
+      //                 ),
+      //               ],
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //       actions: [
+      //         IconButton(
+      //           icon: Icon(Icons.notifications,
+      //               color: Colors.black), // Set icon color to black
+      //           onPressed: () {
+      //             // Handle notification icon press
+      //           },
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
       body: SafeArea(
         child: Column(
           children: [
@@ -456,23 +456,13 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 20.0,
             ),
             Container(
-              height: 200,
-              child: Expanded(
-                  child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  carousal(image: 'images/laundaryimg1.jpeg'),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  carousal(image: 'images/laundaryimg2.jpeg'),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  carousal(image: 'images/laundaryimg3.jpeg')
-                ],
-              )),
-            )
+                height: 150,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: imageList.length,
+                    itemBuilder: (context, index) {
+                      return carousal(image: imageList[index]['image_path']);
+                    }))
           ],
         ),
       ),
@@ -492,7 +482,7 @@ class carousal extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20), color: Colors.black),
         height: 50,
-        width: 200,
+        width: 150,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Image.asset(
