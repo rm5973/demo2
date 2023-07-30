@@ -1,16 +1,21 @@
 import 'dart:ffi';
 
+import 'package:demo1/CartNotifier.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'login.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'laundary app',
-    home: loginPage(),
-  ));
+  runApp(ChangeNotifierProvider(
+      create: (_) => CartNotifier(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'laundary app',
+        home: loginPage(),
+      )));
 }
+
 
 
 
