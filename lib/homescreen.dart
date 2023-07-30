@@ -1,3 +1,4 @@
+import 'package:demo1/cart.dart';
 import 'package:demo1/help.dart';
 import 'package:demo1/laundryhistory.dart';
 import 'package:demo1/login.dart';
@@ -10,161 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import 'laundarybook.dart';
-
-// class NewWidget extends StatefulWidget {
-//   const NewWidget({super.key});
-
-//   @override
-//   State<NewWidget> createState() => _NewWidget();
-// }
-
-// class _NewWidget extends State<NewWidget> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SafeArea(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Column(
-//                     children: [
-//                       Card(
-//                         child: ElevatedButton(
-//                           onPressed: () {
-//                             Navigator.push(
-//                                 context,
-//                                 MaterialPageRoute(
-//                                   builder: ((context) => opWidget()),
-//                                 ));
-//                           },
-//                           style: ElevatedButton.styleFrom(
-//                               backgroundColor: Colors.white),
-//                           child: Image.asset("images/washing-machine 1.png"),
-//                         ),
-//                       ),
-//                       Text("Book laundary")
-//                     ],
-//                   ),
-//                 ),
-//                 Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Column(
-//                     children: [
-//                       Card(
-//                         child: ElevatedButton(
-//                           onPressed: () {
-//                             Navigator.push(
-//                                 context,
-//                                 MaterialPageRoute(
-//                                   builder: ((context) => pickup()),
-//                                 ));
-//                           },
-//                           style: ElevatedButton.styleFrom(
-//                               backgroundColor: Colors.white),
-//                           child: Image.asset("images/location 1.png"),
-//                         ),
-//                       ),
-//                       Text("Pickup List")
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Column(
-//                     children: [
-//                       Card(
-//                         child: ElevatedButton(
-//                           onPressed: () {
-//                             Navigator.pop(context);
-//                           },
-//                           style: ElevatedButton.styleFrom(
-//                               backgroundColor: Colors.white),
-//                           child: Image.asset("images/checklist 1.png"),
-//                         ),
-//                       ),
-//                       Text("laundary history")
-//                     ],
-//                   ),
-//                 ),
-//                 Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Column(
-//                     children: [
-//                       Card(
-//                         child: ElevatedButton(
-//                           onPressed: () {
-//                             Navigator.pop(context);
-//                           },
-//                           style: ElevatedButton.styleFrom(
-//                               backgroundColor: Colors.white),
-//                           child: Image.asset("images/get-money 1.png"),
-//                         ),
-//                       ),
-//                       Text("Payment History")
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Column(
-//                     children: [
-//                       Card(
-//                         child: ElevatedButton(
-//                           onPressed: () {
-//                             Navigator.pop(context);
-//                           },
-//                           style: ElevatedButton.styleFrom(
-//                               backgroundColor: Colors.white),
-//                           child: Image.asset(
-//                             "images/text-file 1.png",
-//                           ),
-//                         ),
-//                       ),
-//                       Text("Book laundary")
-//                     ],
-//                   ),
-//                 ),
-//                 Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Column(
-//                     children: [
-//                       Card(
-//                         child: ElevatedButton(
-//                           onPressed: () {
-//                             Navigator.pop(context);
-//                           },
-//                           style: ElevatedButton.styleFrom(
-//                               backgroundColor: Colors.white),
-//                           child: Image.asset("images/checklist 1.png"),
-//                         ),
-//                       ),
-//                       Text("laundary")
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -193,64 +39,64 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: PreferredSize(
-      //   preferredSize: Size.fromHeight(80), // Increase the app bar height
-      //   child: Padding(
-      //     padding: const EdgeInsets.only(top: 16.0),
-      //     child: AppBar(
-      //       automaticallyImplyLeading: false, // Remove the back button
-      //       backgroundColor: Colors.white, // Set app bar color to white
-      //       elevation: 0, // Remove the shadow
-      //       title: GestureDetector(
-      //         child: Column(
-      //           // Use Column to align texts vertically
-      //           crossAxisAlignment:
-      //               CrossAxisAlignment.start, // Align the text to the left
-      //           children: [
-      //             Padding(
-      //               padding: EdgeInsets.only(
-      //                   top: 16), // Add top padding of 16 pixels
-      //               child: Text(
-      //                 'Current Location',
-      //                 style: TextStyle(
-      //                   fontSize: 16,
-      //                   color: Colors.grey, // Set the color to grey
-      //                 ),
-      //               ),
-      //             ),
-      //             SizedBox(height: 4), // Add some space between the texts
-      //             Row(
-      //               // Use Row to align icon and text horizontally
-      //               children: [
-      //                 Icon(Icons.location_on,
-      //                     color: Colors.blue), // Location icon on the left
-      //                 SizedBox(width: 8),
-      //                 Text(
-      //                   "Potheri, Chennai",
-      //                   style: TextStyle(
-      //                     fontSize: 20,
-      //                     fontWeight:
-      //                         FontWeight.bold, // Set the font weight to bold
-      //                     color: Colors.black, // Set the text color to black
-      //                   ),
-      //                 ),
-      //               ],
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //       actions: [
-      //         IconButton(
-      //           icon: Icon(Icons.notifications,
-      //               color: Colors.black), // Set icon color to black
-      //           onPressed: () {
-      //             // Handle notification icon press
-      //           },
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80), // Increase the app bar height
+        child: Padding(
+          padding: const EdgeInsets.only(top: 16.0),
+          child: AppBar(
+            automaticallyImplyLeading: false, // Remove the back button
+            backgroundColor: Colors.white, // Set app bar color to white
+            elevation: 0, // Remove the shadow
+            title: GestureDetector(
+              child: Column(
+                // Use Column to align texts vertically
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align the text to the left
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: 16), // Add top padding of 16 pixels
+                    child: Text(
+                      'Current Location',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey, // Set the color to grey
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 4), // Add some space between the texts
+                  Row(
+                    // Use Row to align icon and text horizontally
+                    children: [
+                      Icon(Icons.location_on,
+                          color: Colors.blue), // Location icon on the left
+                      SizedBox(width: 8),
+                      Text(
+                        "Potheri, Chennai",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight:
+                              FontWeight.bold, // Set the font weight to bold
+                          color: Colors.black, // Set the text color to black
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.notifications,
+                    color: Colors.black), // Set icon color to black
+                onPressed: () {
+                  // Handle notification icon press
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -394,7 +240,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 72.0,
                         width: 72.0,
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        CartPage()));
+                          },
                           splashColor: Colors.transparent,
                           child: Ink(
                             height: 72.0,
@@ -428,7 +279,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 72.0,
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context)=>MyApp()));
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        MyApp()));
                           },
                           splashColor: Colors.transparent,
                           child: Ink(
