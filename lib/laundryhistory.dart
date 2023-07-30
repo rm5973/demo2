@@ -46,193 +46,247 @@ class _MyAppState extends State<MyApp> {
                 ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 50,left: 25),
+          Expanded(
             child: Container(
-              height: 20,
-              width: 150,
-              child: Text('Details about',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold,color: Colors.black),),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25,bottom: 32),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  height: 25,
-                  width: 130,
-                  child: Text('Order #123',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black),),
-                ),
-                IconButton(
-                  iconSize: 30,
-                  onPressed: () {},
-                  icon: const Icon(Icons.expand_more),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20,right: 20),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.all(Radius.circular(20))
-              ),
-              // margin: EdgeInsets.only(left: 28,top: 158,right: 28,bottom: 178),
-              height: 467.0,
-              width: 367.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              color: Colors.transparent,
+              child: ListView(
                 children: [
+                  tileWidget(
+                    title: 'Order#123',
+                    content:
+                        "",
+                  ),
+                  tileWidget(
+                      title: 'Order#124',
+                      content: ''),
+                ]
+              ),
+            ),
+          ),
           
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 30),
-                    child: Container(
-                      height: 23,
-                      width: 200.0,
-                      child: Text('Order Details',style: TextStyle(fontSize: 19,color: Colors.black,fontWeight: FontWeight.bold),),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 15),
-                    child: Container(
-                      height: 18,
-                      width: 200,
-                      child: Text('Washing and Folding',style: TextStyle(fontSize: 15),),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 15),
-                    child: Container(
-                      height: 18,
-                      width: 200,
-                      child: Text('3 x T-shirt (man)',style: TextStyle(fontSize: 15),),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 15),
-                    child: Container(
-                      height: 18,
-                      width: 200,
-                      child: Text('2 x Shirt (man)',style: TextStyle(fontSize: 15),),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 15),
-                    child: Container(
-                      height: 18,
-                      width: 200,
-                      child: Text('4 x Pants (man)',style: TextStyle(fontSize: 15),),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 15),
-                    child: Container(
-                      height: 18,
-                      width: 200,
-                      child: Text('1 x Jeans (man)',style: TextStyle(fontSize: 15),),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 30),
-                    child: Container(
-                      height: 23,
-                      width: 200,
-                      child: Text('IRONING',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 15),
-                    child: Container(
-                      
-                      height: 18,
-                      width: 200,
-                      child: Text('3 x T-shirts (man)',style: TextStyle(fontSize: 15),),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 30),
-                    child: Container(
-                      height: 23,
-                      width: 200,
-                      child: Text('Subtotal',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),),
-                    ),
-                  ),
-                  
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 15),
-                    child: Container(
-                      height: 23,
-                      width: 200,
-                      child: Text('Delivery',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 40),
-                    child: Container(
-                      height: 23,
-                      width: 200.0,
-                      child: Text('Total',style: TextStyle(fontSize: 19,color: Colors.black,fontWeight: FontWeight.bold),),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20,top: 21,right: 20),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.all(Radius.circular(20))
-              ),
-              height: 122,
-              width: 367,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 10),
-                    child: Container(
-                      child: Text('Your clothes are now washing',style: TextStyle(fontSize: 15,color: Colors.black,fontWeight: FontWeight.bold),),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                    padding: const EdgeInsets.only(left: 25,top: 20),
-                    child: Container(
-                          child: Text('Estimated delivery',style: TextStyle(fontSize: 15,color: Colors.black,),),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: Container(
-                          child: Text('12 Jan 2023',style: TextStyle(fontSize: 15,color: Colors.black,),),
-                    ),
-                  ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 120),
-                        child: Container(
-                          height: 78.0,
-                          width: 67.0,
-                          child: Image(image: AssetImage('images/Washing Machine.png')),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
+          
         ],),
       ),),
     ),);
+  }
+}
+
+class tileWidget extends StatelessWidget {
+  const tileWidget({
+    Key? key,
+    required this.title,
+    required this.content,
+  }) : super(key: key);
+  final String title;
+  final String content;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: Colors.transparent),
+        // color: HexColor('#66BFF1'),
+        child: ExpansionTile(
+         // collapsedTextColor: Color.fromARGB(255, 233, 10, 10),
+          title: Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Text(
+              title,
+              style: TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold),
+            ),
+          ),
+          children: [
+            Container(
+              width: 500,
+
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Container(
+                              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  color: Colors.grey),
+                              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                          
+                    Padding(
+                      padding: const EdgeInsets.only(left:20,top: 30),
+                      child: Container(
+                        height: 23,
+                        width: 200.0,
+                        child: Text('Order Details',style: TextStyle(fontSize: 19,color: Colors.black,fontWeight: FontWeight.bold),),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15,left: 20),
+                      child: Container(
+                        height: 18,
+                        width: 200,
+                        child: Text('Washing and Folding',style: TextStyle(fontSize: 15),),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15,left: 20),
+                      child: Container(
+                        height: 18,
+                        width: 200,
+                        child: Text('3 x T-shirt (man)',style: TextStyle(fontSize: 15),),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15,left: 20),
+                      child: Container(
+                        height: 18,
+                        width: 200,
+                        child: Text('2 x Shirt (man)',style: TextStyle(fontSize: 15),),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15,left: 20),
+                      child: Container(
+                        height: 18,
+                        width: 200,
+                        child: Text('4 x Pants (man)',style: TextStyle(fontSize: 15),),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15,left: 20),
+                      child: Container(
+                        height: 18,
+                        width: 200,
+                        child: Text('1 x Jeans (man)',style: TextStyle(fontSize: 15),),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30,left: 20),
+                      child: Container(
+                        height: 23,
+                        width: 200,
+                        child: Text('IRONING',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15,left: 20),
+                      child: Container(
+                        
+                        height: 18,
+                        width: 200,
+                        child: Text('3 x T-shirts (man)',style: TextStyle(fontSize: 15),),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30,left: 20),
+                      child: Container(
+                        height: 23,
+                        width: 200,
+                        child: Text('Subtotal',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),),
+                      ),
+                    ),
+                    
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15,left: 20),
+                      child: Container(
+                        height: 23,
+                        width: 200,
+                        child: Text('Delivery',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40,left: 20),
+                      child: Container(
+                        height: 23,
+                        width: 200.0,
+                        child: Text('Total',style: TextStyle(fontSize: 19,color: Colors.black,fontWeight: FontWeight.bold),),
+                      ),
+                    ),
+                    
+                    
+                    
+                  ],
+                              ),
+                            ),
+                          ),
+                      ),
+           SizedBox(height: 10,),
+          tilepart2()
+          ]
+                    )
+                  
+                              ),
+                            );
+                
+                
+          
+        
+      
+    
+  }
+}
+
+
+class tilepart2
+ extends StatelessWidget {
+  const tilepart2
+  ({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+                            padding: const EdgeInsets.only(),
+                            child: Container(
+                              decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.all(Radius.circular(10))
+                              ),
+                              height: 122,
+                              width: 367,
+                              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25,top: 10),
+                      child: Container(
+                        child: Text('Your clothes are now washing',style: TextStyle(fontSize: 15,color: Colors.black,fontWeight: FontWeight.bold),),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                      padding: const EdgeInsets.only(left: 25,top: 20),
+                      child: Container(
+                            child: Text('Estimated delivery',style: TextStyle(fontSize: 15,color: Colors.black,),),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25),
+                      child: Container(
+                            child: Text('12 Jan 2023',style: TextStyle(fontSize: 15,color: Colors.black,),),
+                      ),
+                    ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 120),
+                          child: Container(
+                            height: 78.0,
+                            width: 67.0,
+                            child: Image(image: AssetImage('images/Washing Machine.png')),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                              ),
+                            ),
+                          );
+                  
+                  ;
   }
 }
