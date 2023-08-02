@@ -1,6 +1,7 @@
 import 'package:demo1/cart.dart';
 import 'package:demo1/help.dart';
 import 'package:demo1/laundryhistory.dart';
+import 'package:demo1/locationselect.dart';
 import 'package:demo1/login.dart';
 import 'package:demo1/optionlaund.dart';
 import 'package:demo1/payment.dart';
@@ -48,6 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
             backgroundColor: Colors.white, // Set app bar color to white
             elevation: 0, // Remove the shadow
             title: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        LocationSelectionPage()));
+              },
               child: Column(
                 // Use Column to align texts vertically
                 crossAxisAlignment:
@@ -206,7 +212,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 72.0,
                         width: 72.0,
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        paymentWidget()));
+                          },
                           splashColor: Colors.transparent,
                           child: Ink(
                             height: 72.0,
