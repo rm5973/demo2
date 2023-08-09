@@ -1,6 +1,8 @@
 import 'package:demo1/homescreen2.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:hexcolor/src/hexcolor_base.dart';
 import 'package:line_icons/line_icons.dart';
@@ -13,6 +15,27 @@ class loginPage extends StatefulWidget {
 }
 
 class _loginPageState extends State<loginPage> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  static Future<User?> loginUsingEmailPassword(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print("no user found for that email");
+      }
+    }
+    return user;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +83,7 @@ class _loginPageState extends State<loginPage> {
                                 height: 40,
                               ),
                               TextFormField(
+                                controller: _emailController,
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.fromLTRB(
                                       20.0, 10.0, 20.0, 10.0),
@@ -79,6 +103,8 @@ class _loginPageState extends State<loginPage> {
                                 height: 15,
                               ),
                               TextFormField(
+                                controller: _passwordController,
+                                obscureText: true,
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.fromLTRB(
                                       20.0, 10.0, 20.0, 10.0),
@@ -101,13 +127,21 @@ class _loginPageState extends State<loginPage> {
                                 width: 250,
                                 height: 30,
                                 child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: ((context) =>
-                                                Homescreen())),
-                                      );
+                                    onPressed: () async {
+                                      // Replace this with your login logic
+                                      User? user =
+                                          await loginUsingEmailPassword(
+                                              email: _emailController.text,
+                                              password:
+                                                  _passwordController.text,
+                                              context: context);
+                                      print(user);
+                                      if (user != null) {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Homescreen()));
+                                      }
                                     },
                                     child: Text('Login'),
                                     style: ButtonStyle(
@@ -233,13 +267,6 @@ class _loginPageState extends State<loginPage> {
                   )
                 ],
               ),
-              // Container(padding: EdgeInsets.only(top:15,bottom: 2),
-              //     child: Column(
-              //       children: [
-              //         Text('Or connect us with..',style: TextStyle(color: Colors.black),),
-              //
-              //       ],
-              //     )),
             ],
           ),
         ),

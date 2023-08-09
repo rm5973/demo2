@@ -1,3 +1,5 @@
+import 'package:demo1/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -6,6 +8,41 @@ import 'homescreen.dart';
 
 class profile extends StatelessWidget {
   const profile({super.key});
+  void _showLogoutConfirmation(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Logout"),
+          content: Text("Are you sure you want to logout?"),
+          actions: <Widget>[
+            TextButton(
+              child: Text("Cancel"),
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+            ),
+            TextButton(
+              child: Text("Logout"),
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+                _logoutUser(context); // Call the function to log out the user
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _logoutUser(BuildContext context) {
+    FirebaseAuth.instance.signOut();
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => loginPage()),
+      (route) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +117,9 @@ class profile extends StatelessWidget {
               ProfileMenuWidget(
                 title: "Logout",
                 icon: Icons.login,
-                onPressed: () {},
+                onPressed: () {
+                  _showLogoutConfirmation(context);
+                },
                 textColor: Colors.red,
                 endIcon: false,
               ),

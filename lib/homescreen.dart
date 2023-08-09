@@ -10,10 +10,10 @@ import 'package:demo1/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'laundarybook.dart';
 
-import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -25,6 +25,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String selectedLocation = "No location selected";
+  void _navigateToLocationSelection() async {
+    final newLocation = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LocationSelectionPage()),
+    );
+  }
+
   List imageList = [
     {"id": 1, "image_path": 'images/laundaryimg1.jpeg'},
     {"id": 2, "image_path": 'images/laundaryimg2.jpeg'},
@@ -41,60 +49,114 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80), // Increase the app bar height
+        preferredSize: Size.fromHeight(100),
         child: Padding(
-          padding: const EdgeInsets.only(top: 16.0),
+          padding: const EdgeInsets.only(
+            top: 30.0,
+          ),
           child: AppBar(
-            automaticallyImplyLeading: false, // Remove the back button
-            backgroundColor: Colors.white, // Set app bar color to white
-            elevation: 0, // Remove the shadow
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.white,
+            elevation: 0,
             title: GestureDetector(
               onTap: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                        LocationSelectionPage()));
+                  builder: (BuildContext context) => LocationSelectionPage(),
+                ));
               },
               child: Column(
-                // Use Column to align texts vertically
-                crossAxisAlignment:
-                    CrossAxisAlignment.start, // Align the text to the left
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(
-                        top: 16), // Add top padding of 16 pixels
+                    padding: EdgeInsets.only(top: 16),
                     child: Text(
                       'Current Location',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.grey, // Set the color to grey
+                        color: Colors.grey,
                       ),
                     ),
                   ),
-                  SizedBox(height: 4), // Add some space between the texts
-                  Row(
-                    // Use Row to align icon and text horizontally
-                    children: [
-                      Icon(Icons.location_on,
-                          color: Colors.blue), // Location icon on the left
-                      SizedBox(width: 8),
-                      Text(
-                        "Potheri, Chennai",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight:
-                              FontWeight.bold, // Set the font weight to bold
-                          color: Colors.black, // Set the text color to black
-                        ),
-                      ),
-                    ],
+                  SizedBox(height: 4),
+                  FutureBuilder<User?>(
+                    future: FirebaseAuth.instance.authStateChanges().first,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return CircularProgressIndicator();
+                      } else {
+                        if (snapshot.hasData) {
+                          final user = snapshot.data;
+                          final userId = user!.uid;
+
+                          return FutureBuilder<DocumentSnapshot>(
+                            future: FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(userId)
+                                .collection('locations')
+                                .doc('NFcZto6jL0j69TBAAaAZ')
+                                .get(),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return CircularProgressIndicator();
+                              } else {
+                                if (snapshot.hasError) {
+                                  return Text('Error: ${snapshot.error}');
+                                } else {
+                                  final data = snapshot.data;
+
+                                  // Check if the document exists before accessing the 'address' field
+                                  if (snapshot.hasData &&
+                                      snapshot.data!.exists) {
+                                    final locationName = data![
+                                        'address']; // Access the 'address' field
+                                    print('Location Address: $locationName');
+
+                                    return Row(
+                                      children: [
+                                        Icon(Icons.location_on,
+                                            color: Colors.blue),
+                                        SizedBox(width: 8),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              (locationName.length > 8)
+                                                  ? '${locationName.substring(0, 8)}...'
+                                                  : locationName,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  } else {
+                                    // Document doesn't exist or 'address' field is missing
+                                    return Text('Location data not available.');
+                                  }
+                                }
+                              }
+                            },
+                          );
+                        } else {
+                          // User is not authenticated, handle this case as needed
+                          return Text('User is not authenticated.');
+                        }
+                      }
+                    },
                   ),
                 ],
               ),
             ),
             actions: [
               IconButton(
-                icon: Icon(Icons.notifications,
-                    color: Colors.black), // Set icon color to black
+                icon: Icon(Icons.notifications, color: Colors.black),
                 onPressed: () {
                   // Handle notification icon press
                 },
@@ -323,14 +385,6 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 20.0,
             ),
-            Container(
-                height: 150,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: imageList.length,
-                    itemBuilder: (context, index) {
-                      return carousal(image: imageList[index]['image_path']);
-                    }))
           ],
         ),
       ),
