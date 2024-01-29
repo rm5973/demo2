@@ -1,3 +1,4 @@
+import 'package:demo1/Signuppage.dart';
 import 'package:demo1/homescreen2.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -163,7 +164,29 @@ class _loginPageState extends State<loginPage> {
                                   child: const Text(
                                     'Forgot your password?',
                                     style: TextStyle(color: Colors.white),
-                                  ))
+                                  )),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Dont have account?'),
+                                  TextButton(
+                                      onPressed: () {},
+                                      child: TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context)
+                                                .pushReplacement(
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            Signup()));
+                                          },
+                                          child: const Text(
+                                            'SIGN UP',
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 20, 121, 215)),
+                                          )))
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -249,14 +272,6 @@ class _loginPageState extends State<loginPage> {
                                       ),
                                     ),
                                   )
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('Dont have account?'),
-                                  TextButton(
-                                      onPressed: () {}, child: Text('SignUp'))
                                 ],
                               ),
                             ],
