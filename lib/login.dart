@@ -193,7 +193,6 @@ class _loginPageState extends State<loginPage> {
                         Container(
                           padding: EdgeInsets.fromLTRB(2, 600, 2, 1),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 'or connect with',
@@ -207,71 +206,75 @@ class _loginPageState extends State<loginPage> {
                                     MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  // SizedBox(width: 25,),
-                                  Container(
-                                    width: 130,
-                                    child: ElevatedButton(
-                                      onPressed: () {},
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.facebook),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8.0),
-                                            child: Text('facebook'),
-                                          ),
-                                        ],
-                                      ),
-                                      style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                HexColor('#35A6EF')),
-                                        shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
+                                  Expanded(
+                                    child: Container(
+                                      width: 130,
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.facebook),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0),
+                                              child: Text('facebook'),
+                                            ),
+                                          ],
+                                        ),
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  HexColor('#35A6EF')),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
                                             RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        )),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                  // SizedBox(width: 10,),
-                                  Container(
-                                    width: 130,
-                                    decoration: BoxDecoration(
+                                  SizedBox(width: 10),
+                                  Expanded(
+                                    child: Container(
+                                      width: 130,
+                                      decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(
-                                            Radius.circular(25))),
-                                    child: ElevatedButton(
-                                      onPressed: () {},
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            LineIcons.twitter,
-                                            size: 18,
-                                          ),
-                                          SizedBox(
-                                            width: 7,
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8.0),
-                                            child: Text('twitter'),
-                                          ),
-                                        ],
+                                            Radius.circular(25)),
                                       ),
-                                      style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                HexColor('#5073B5')),
-                                        shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              LineIcons.twitter,
+                                              size: 18,
+                                            ),
+                                            SizedBox(width: 7),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0),
+                                              child: Text('twitter'),
+                                            ),
+                                          ],
+                                        ),
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  HexColor('#5073B5')),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
                                             RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        )),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ],

@@ -1,3 +1,4 @@
+import 'package:demo1/YourItems.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'Badge.dart';
@@ -7,9 +8,15 @@ import 'homescreen2.dart';
 class CartItem {
   final String name;
   final double price;
+  final String category;
   int quantity;
 
-  CartItem({required this.name, required this.price, required this.quantity});
+  CartItem({
+    required this.name,
+    required this.price,
+    required this.category,
+    required this.quantity,
+  });
 }
 
 class CartPage extends StatefulWidget {
@@ -122,14 +129,18 @@ class _CartPageState extends State<CartPage>
     }
   }
 
-  void _handleAddToList() {
-    // Handle "Add to List" button press here
-    // For example, update the cart state
-    int totalQuantity = _getTotalItems();
-    if (totalQuantity > 0) {
-      final cartNotifier = Provider.of<CartNotifier>(context, listen: false);
-      cartNotifier.addToCart(totalQuantity);
-    }
+  void _handleAddToList(String category, String itemName) {
+    // Create a CartItem object with the selected category, item name, and total quantity
+    final cartItem = CartItem(
+      name: itemName, // Use the provided itemName parameter
+      price: 8.0, // Assuming a constant price for now
+      category: category,
+      quantity: _getTotalItems(),
+    );
+
+    // Add the cartItem to the cart
+    final cartNotifier = Provider.of<CartNotifier>(context, listen: false);
+    cartNotifier.addToCart(cartItem);
   }
 
   @override
@@ -159,8 +170,11 @@ class _CartPageState extends State<CartPage>
               child: IconButton(
                 icon: Icon(Icons.shopping_cart),
                 onPressed: () {
-                  // Handle cart button press here
-                  // For example, navigate to a cart page
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => YourItems(),
+                    ),
+                  );
                 },
               ),
             ),
@@ -227,16 +241,25 @@ class _CartPageState extends State<CartPage>
                                     ''; // Reset search query when changing category
                               });
                             },
-                            style: ElevatedButton.styleFrom(
-                              elevation: 2,
-                              shape: RoundedRectangleBorder(
+                            style: ButtonStyle(
+                              elevation: MaterialStateProperty.all(2),
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
+                              )),
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith<Color>(
+                                (Set<MaterialState> states) {
+                                  if (states.contains(MaterialState.pressed)) {
+                                    return selectedCategory == category
+                                        ? Color(0xFF113BC1)
+                                        : Color(0xFF2EC0F9);
+                                  }
+                                  return selectedCategory == category
+                                      ? Color(0xFF113BC1)
+                                      : Color(0xFF2EC0F9);
+                                },
                               ),
-                              primary: selectedCategory == category
-                                  ? Color(
-                                      0xFF113BC1) // Set the selected color here
-                                  : Color(
-                                      0xFF2EC0F9), // Set the unselected color here
                             ),
                             child: Padding(
                               padding:
@@ -446,11 +469,12 @@ class _CartPageState extends State<CartPage>
                   child: Padding(
                     padding: const EdgeInsets.only(right: 20, bottom: 15.0),
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors
-                            .grey, // Set the button background color to grey
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.grey),
                       ),
-                      onPressed: _handleAddToList,
+                      onPressed: () {
+                        _handleAddToList(selectedCategory, '');
+                      },
                       child: Text("Add to List"),
                     ),
                   ),

@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-import 'homescreen.dart';
+import 'dashboard.dart';
 
 class Homescreen extends StatefulWidget {
   @override

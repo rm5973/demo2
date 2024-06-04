@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class Badge1 extends StatelessWidget {
   final Widget child;
   final String value;
+  final Color? color;
 
   Badge1({
     required this.child,
     required this.value,
+    this.color,
   });
 
   @override
@@ -16,13 +18,13 @@ class Badge1 extends StatelessWidget {
       children: [
         child,
         Positioned(
-          top: 0,
-          right: 0,
+          right: 8,
+          top: 8,
           child: Container(
             padding: EdgeInsets.all(2),
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.red,
+              color: color ?? Theme.of(context).colorScheme.secondary,
+              borderRadius: BorderRadius.circular(10),
             ),
             constraints: BoxConstraints(
               minWidth: 16,
@@ -31,8 +33,8 @@ class Badge1 extends StatelessWidget {
             child: Text(
               value,
               style: TextStyle(
-                fontSize: 10,
                 color: Colors.white,
+                fontSize: 10,
               ),
               textAlign: TextAlign.center,
             ),

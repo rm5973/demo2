@@ -1,4 +1,4 @@
-import 'package:demo1/cart.dart';
+import 'package:demo1/bookingPage.dart';
 import 'package:demo1/help.dart';
 import 'package:demo1/laundryhistory.dart';
 import 'package:demo1/locationselect.dart';
@@ -212,8 +212,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.only(left: 5.0),
                       child: Container(
                         child: TextButton(
-                          style: TextButton.styleFrom(
-                            primary: Colors.black,
+                          style: ButtonStyle(
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.black),
                           ),
                           onPressed: () {},
                           child: Text(
@@ -241,7 +242,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 72.0,
                         margin: EdgeInsets.only(left: 20.0),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        CartPage()));
+                          },
                           splashColor: Colors.transparent,
                           child: Ink(
                             height: 72.0,
@@ -309,6 +315,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      //  aa
                       Container(
                         height: 72.0,
                         width: 72.0,
